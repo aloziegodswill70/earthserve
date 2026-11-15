@@ -24,11 +24,13 @@ export default function HomePage() {
       {/* EARTHSERVE MASTER PLAN */}
       <MasterPlanSection />
 
+      
+      {/* DONATIONS */}
+      <DonationSection />
+
       {/* RECYCLING & WASTE MANAGEMENT */}
       <RecyclingSection />
 
-      {/* DONATIONS */}
-      <DonationSection />
     </>
   );
 }

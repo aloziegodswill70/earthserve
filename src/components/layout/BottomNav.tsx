@@ -13,7 +13,7 @@ import {
 
 const items = [
   { label: "Home", href: "/", Icon: House },
-  { label: "Focus", href: "/focus-areas", Icon: Leaf },
+  { label: "Focus", href: "/focus", Icon: Leaf },
   { label: "Projects", href: "/projects", Icon: FolderOpen },
   { label: "Support", href: "/get-involved", Icon: HandHeart },
   { label: "Contact", href: "/contact", Icon: Phone },

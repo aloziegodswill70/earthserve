@@ -1,3 +1,7 @@
+
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -5,6 +9,21 @@ import {
   Recycle,
   Sprout,
 } from "lucide-react";
+
+const galleryImages = [
+  {
+    src: "/images/earthserve1.jpg",
+    alt: "Environmental action",
+  },
+  {
+    src: "/images/earthserve6.jpg",
+    alt: "Community development",
+  },
+  {
+    src: "/images/earthserve5.jpg",
+    alt: "Sustainable communities",
+  },
+];
 
 const focusAreas = [
   {
@@ -31,8 +50,73 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative isolate overflow-hidden bg-[#F6F8EE] py-20 text-center sm:py-24 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#F6F8EE] py-16 text-center sm:py-24 lg:py-28"
     >
+      {/* Continuous horizontal gallery animation */}
+      <style jsx global>{`
+        @keyframes earthServeSlide {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+
+        .earth-gallery-window {
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .earth-gallery-track {
+          display: flex;
+          flex-wrap: nowrap;
+          width: max-content;
+          animation: earthServeSlide 18s linear infinite !important;
+          animation-play-state: running !important;
+          will-change: transform;
+        }
+
+        .earth-gallery-set {
+          display: flex;
+          flex: 0 0 auto;
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 14px;
+          padding-right: 14px;
+        }
+
+        .earth-gallery-image {
+          position: relative;
+          flex: 0 0 auto;
+          width: 220px;
+          height: 125px;
+          overflow: hidden;
+          border-radius: 12px;
+        }
+
+        @media (min-width: 640px) {
+          .earth-gallery-set {
+            gap: 20px;
+            padding-right: 20px;
+          }
+
+          .earth-gallery-image {
+            width: 300px;
+            height: 170px;
+            border-radius: 16px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .earth-gallery-image {
+            width: 360px;
+            height: 200px;
+          }
+        }
+      `}</style>
+
       {/* Decorative grid */}
       <div
         aria-hidden="true"
@@ -50,78 +134,104 @@ export default function AboutSection() {
       />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        {/* Nature images */}
-        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[0.8fr_1.4fr_0.8fr] lg:gap-10">
-          <div className="mx-auto w-full max-w-sm">
-            <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=85"
-                alt="Young green plants growing in a garden"
-                className="h-64 w-full object-cover sm:h-72 lg:h-80"
-                loading="lazy"
-              />
-            </div>
-            <p className="mt-3 text-sm font-semibold text-[#477B35]">
-              Growing a greener future
-            </p>
-          </div>
 
-          {/* Centered introduction */}
-          <div className="mx-auto max-w-2xl">
-            <span className="inline-flex items-center justify-center gap-2 rounded-full border border-[#477B35]/20 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#276B35]">
-              <Leaf size={15} />
-              Who We Are
+        {/* What We Do - Continuous Horizontal Gallery */}
+        <div className="mb-12 sm:mb-16">
+          <h3 className="mb-6 font-heading text-2xl font-bold text-[#012812] sm:text-3xl">
+            What We Do
+          </h3>
+
+          <div className="earth-gallery-window">
+            <div className="earth-gallery-track">
+
+              {/* First image set */}
+              <div className="earth-gallery-set">
+                {galleryImages.map((image, index) => (
+                  <div
+                    key={`first-${index}`}
+                    className="earth-gallery-image"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      unoptimized
+                      loading="eager"
+                      sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Identical second set for seamless looping */}
+              <div
+                className="earth-gallery-set"
+                aria-hidden="true"
+              >
+                {galleryImages.map((image, index) => (
+                  <div
+                    key={`second-${index}`}
+                    className="earth-gallery-image"
+                  >
+                    <Image
+                      src={image.src}
+                      alt=""
+                      fill
+                      unoptimized
+                      loading="lazy"
+                      sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 360px"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* Centered introduction */}
+        <div className="mx-auto max-w-3xl">
+          <span className="inline-flex items-center justify-center gap-2 rounded-full border border-[#477B35]/20 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#276B35]">
+            <Leaf size={15} />
+            Who We Are
+          </span>
+
+          <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-[#012812] sm:text-5xl lg:text-6xl">
+            Caring for our planet.
+            <span className="mt-2 block text-[#477B35]">
+              Empowering our communities.
             </span>
+          </h2>
 
-            <h2 className="mt-6 font-heading text-4xl font-bold leading-tight text-[#012812] sm:text-5xl lg:text-6xl">
-              Caring for our planet.
-              <span className="mt-2 block text-[#477B35]">
-                Empowering our communities.
-              </span>
-            </h2>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-[#365342] sm:text-lg">
+            EarthServe Foundation is committed to promoting environmental
+            responsibility and encouraging communities to take meaningful
+            steps toward a cleaner, greener and more sustainable future.
+          </p>
 
-            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-[#365342] sm:text-lg">
-              EarthServe Foundation is committed to promoting environmental
-              responsibility and encouraging communities to take meaningful
-              steps toward a cleaner, greener and more sustainable future.
-            </p>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-[#365342]">
+            Through awareness, community participation and practical
+            environmental initiatives, we aim to inspire people to make
+            sustainability part of everyday life.
+          </p>
 
-            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-[#365342]">
-              Through awareness, community participation and practical
-              environmental initiatives, we aim to inspire people to make
-              sustainability part of everyday life.
-            </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#075B2A] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#03391C]"
+            >
+              Discover Our Story
+              <ArrowUpRight size={18} />
+            </Link>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#075B2A] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#03391C]"
-              >
-                Discover Our Story
-                <ArrowUpRight size={18} />
-              </Link>
-
-              <Link
-                href="/get-involved"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#276B35]/30 bg-white px-6 py-3.5 text-sm font-bold text-[#075B2A] transition hover:border-[#075B2A] hover:bg-[#E8EDCF]"
-              >
-                Join Our Mission
-              </Link>
-            </div>
-          </div>
-
-          <div className="mx-auto w-full max-w-sm">
-            <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=85"
-                alt="Renewable energy infrastructure supporting a cleaner future"
-                className="h-64 w-full object-cover sm:h-72 lg:h-80"
-                loading="lazy"
-              />
-            </div>
-            <p className="mt-3 text-sm font-semibold text-[#477B35]">
-              Supporting sustainable solutions
-            </p>
+            <Link
+              href="/get-involved"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#276B35]/30 bg-white px-6 py-3.5 text-sm font-bold text-[#075B2A] transition hover:border-[#075B2A] hover:bg-[#E8EDCF]"
+            >
+              Join Our Mission
+            </Link>
           </div>
         </div>
 
@@ -184,6 +294,7 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

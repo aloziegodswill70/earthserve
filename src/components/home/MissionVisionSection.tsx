@@ -1,3 +1,4 @@
+
 import {
   ArrowUpRight,
   Compass,
@@ -6,6 +7,7 @@ import {
   Leaf,
   Target,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const values = [
@@ -82,15 +84,13 @@ export default function MissionVisionSection() {
             />
 
             <div className="relative flex flex-col items-center">
-              <div className="flex w-full flex-col items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D4D68A] text-[#012812]">
-                  <Target size={27} />
-                </div>
-
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">
-                  01 / Mission
-                </span>
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D4D68A] text-[#012812]">
+                <Target size={27} />
               </div>
+
+              <span className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-white/50">
+                01 / Mission
+              </span>
 
               <h3 className="mt-8 font-heading text-3xl font-bold text-white sm:text-4xl">
                 What We Do
@@ -120,15 +120,13 @@ export default function MissionVisionSection() {
             />
 
             <div className="relative flex flex-col items-center">
-              <div className="flex w-full flex-col items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#012812] text-[#D4D68A]">
-                  <Eye size={27} />
-                </div>
-
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#477B35]/70">
-                  02 / Vision
-                </span>
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#012812] text-[#D4D68A]">
+                <Eye size={27} />
               </div>
+
+              <span className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#477B35]/70">
+                02 / Vision
+              </span>
 
               <h3 className="mt-8 font-heading text-3xl font-bold text-[#012812] sm:text-4xl">
                 What We Aspire To
@@ -151,10 +149,46 @@ export default function MissionVisionSection() {
           </article>
         </div>
 
+        {/* Featured EarthServe image */}
+        <div className="mt-12 lg:mt-16">
+          <div className="relative isolate min-h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl sm:min-h-[420px] lg:min-h-[480px]">
+            <Image
+              src="/images/earthserve1.jpg"
+              alt="EarthServe Foundation environmental and community initiatives"
+              fill
+              priority={false}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-cover transition-transform duration-1000 hover:scale-105"
+            />
+
+            {/* Image overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#012812]/95 via-[#012812]/35 to-transparent" />
+
+            <div className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-9 text-center sm:px-12 sm:pb-14">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#D4D68A]/40 bg-[#012812]/50 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#D4D68A] backdrop-blur-sm sm:text-xs">
+                <Leaf size={14} />
+                Our Commitment to the Earth
+              </span>
+
+              <h3 className="mt-5 max-w-3xl font-heading text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+                A Greener Environment.
+                <span className="block text-[#D4D68A]">
+                  Stronger Communities.
+                </span>
+              </h3>
+
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
+                We believe meaningful environmental change begins with
+                awareness, collective responsibility and practical action.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Core values */}
         <div className="mt-20 lg:mt-24">
           <div className="flex flex-col items-center gap-4 text-center">
-            <div className="text-center">
+            <div>
               <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-[#D4D68A]">
                 The Principles That Guide Us
               </p>
