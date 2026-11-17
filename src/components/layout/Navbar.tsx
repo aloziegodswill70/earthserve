@@ -15,6 +15,80 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const website = "https://theearthservefoundation.com";
+
+const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=6&color=000000&bgcolor=ffffff&data=${encodeURIComponent(
+  website
+)}`;
+
+function BrandName() {
+  return (
+    <div className="flex min-w-0 flex-col justify-center">
+      <span
+        className="whitespace-nowrap text-xl font-black leading-none tracking-tight text-[#83C923] sm:text-2xl lg:text-3xl"
+        style={{
+          WebkitTextStroke: "1px #080808",
+          paintOrder: "stroke fill",
+          textShadow: "1.5px 2px 0px #080808",
+        }}
+      >
+        EarthServe
+      </span>
+
+      <span className="mt-1.5 whitespace-nowrap text-[9px] font-black uppercase tracking-tight text-[#171717] sm:text-xs lg:text-sm">
+        Foundation International
+      </span>
+    </div>
+  );
+}
+
+function BrandLogo() {
+  return (
+    <Link
+      href="/"
+      aria-label="EarthServe Foundation International home"
+      className="flex h-14 w-14 shrink-0 items-center justify-center bg-black p-1.5 sm:h-16 sm:w-16 lg:h-[76px] lg:w-[76px]"
+    >
+      <div className="relative h-full w-full">
+        <Image
+          src="/images/earthservelogo.png"
+          alt="EarthServe logo"
+          fill
+          priority
+          sizes="76px"
+          className="object-contain"
+        />
+      </div>
+    </Link>
+  );
+}
+
+function WebsiteQR() {
+  return (
+    <div className="group relative shrink-0">
+      <a
+        href={website}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit the EarthServe website"
+        className="block rounded-md border border-earth-100 bg-white p-1 shadow-sm transition duration-300 group-hover:scale-105"
+      >
+        <img
+          src={qrCodeUrl}
+          alt="Scan to visit EarthServe Foundation International"
+          width={64}
+          height={64}
+          className="h-10 w-10 object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14"
+        />
+      </a>
+
+      <span className="pointer-events-none absolute right-0 top-full z-[60] mt-2 w-max rounded-lg bg-earth-950 px-3 py-2 text-[10px] font-semibold text-white opacity-0 shadow-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:text-xs">
+        theearthservefoundation.com
+      </span>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,32 +96,21 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-earth-100 bg-white/95 shadow-sm backdrop-blur-md">
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:px-5 lg:px-8 lg:py-3"
       >
-        <Link
-          href="/"
-          className="flex shrink-0 items-center"
-          onClick={() => setMenuOpen(false)}
-          aria-label="EarthServe home"
-        >
-         <span className="relative block h-12 w-24 shrink-0 sm:h-16 sm:w-28">
-            <Image
-              src="/images/earthservelogo.png"
-              alt="EarthServe Foundation International logo"
-              fill
-              priority
-              sizes="(min-width: 640px) 112px, 96px"
-              className="object-contain"
-            />
-          </span>
-        </Link>
+        {/* Brand identity */}
+        <div className="flex min-w-0 shrink items-center gap-2 sm:gap-3 lg:gap-4">
+          <BrandLogo />
+          <BrandName />
+        </div>
 
-        <div className="hidden items-center gap-5 lg:flex xl:gap-7">
+        {/* Desktop and laptop navigation */}
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-earth-800 transition hover:text-earth-500"
+              className="whitespace-nowrap text-sm font-semibold text-earth-800 transition hover:text-[#83C923]"
             >
               {link.label}
             </Link>
@@ -55,25 +118,31 @@ export default function Navbar() {
 
           <Link
             href="/donations"
-            className="inline-flex items-center gap-2 rounded-full bg-earth-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-earth-800"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-earth-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-earth-800 xl:px-5"
           >
             Support Our Mission
             <ArrowUpRight size={16} />
           </Link>
         </div>
 
-        <button
-          type="button"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-earth-100 text-earth-800 transition hover:bg-earth-50 lg:hidden"
-        >
-          {menuOpen ? <X size={23} /> : <Menu size={23} />}
-        </button>
+        {/* Mobile QR code and menu */}
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          <WebsiteQR />
+
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-earth-100 text-earth-800 transition hover:bg-earth-50"
+          >
+            {menuOpen ? <X size={23} /> : <Menu size={23} />}
+          </button>
+        </div>
       </nav>
 
+      {/* Mobile navigation dropdown */}
       {menuOpen && (
         <div
           id="mobile-navigation"
@@ -85,7 +154,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-earth-50 py-3.5 text-sm font-semibold text-earth-800 transition hover:text-earth-500"
+                className="border-b border-earth-50 py-3.5 text-sm font-semibold text-earth-800 transition hover:text-[#83C923]"
               >
                 {link.label}
               </Link>

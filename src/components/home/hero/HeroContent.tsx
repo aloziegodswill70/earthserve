@@ -1,4 +1,12 @@
 
+
+import { Great_Vibes } from "next/font/google";
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export default function HeroContent() {
   return (
     <>
@@ -8,15 +16,26 @@ export default function HeroContent() {
 
       <h1 className="earth-italic-heading mx-auto mt-7 max-w-4xl font-heading text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-7xl">
         Building a Cleaner Earth.
-        <span className="mt-2 block font-extrabold text-gold">
-          Empowering a Better Future.
-        </span>
       </h1>
 
+      <div className="mt-3">
+        <p
+          className={`${greatVibes.className} text-5xl leading-tight text-white sm:text-6xl md:text-7xl`}
+        >
+          Empowering the Next Generation
+        </p>
+
+        <p
+          className={`${greatVibes.className} mt-1 text-5xl leading-tight text-white sm:text-6xl md:text-7xl`}
+        >
+          for a Sustainable Future
+        </p>
+      </div>
+
       <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-7 text-white sm:text-base sm:leading-8">
-        Advancing material recycling, sustainable farming,
+        Advancing material recycling,
         renewable energy, innovation, and opportunities for
-        young people and women.
+        youth and women.
       </p>
     </>
   );

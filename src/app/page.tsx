@@ -5,6 +5,7 @@ import MissionVisionSection from "@/components/home/MissionVisionSection";
 import MasterPlanSection from "@/components/home/MasterPlanSection";
 import RecyclingSection from "@/components/home/RecyclingSection";
 import DonationSection from "@/components/home/DonationSection";
+import OperationalTeam from "@/components/sections/OperationalTeam";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,9 @@ export default function HomePage() {
 
       {/* ABOUT EARTHSERVE */}
       <AboutSection />
+
+      {/*Operational Team*/}
+      <OperationalTeam />
 
       {/* OUR IMPACT */}
       <ImpactSection />

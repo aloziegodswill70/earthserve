@@ -69,7 +69,7 @@ img {
   );
 }
 
-/* Reusable 32px grid, matching the SelfBoss grid technique */
+/* Reusable 32px grid */
 .earth-grid {
   position: relative;
   isolation: isolate;
@@ -125,7 +125,7 @@ img {
     );
 }
 
-/* All website content uses centered alignment */
+/* Centered website content */
 .earth-container {
   width: min(100% - 2rem, 1200px);
   margin-inline: auto;
@@ -149,14 +149,80 @@ img {
   background: #d4d68a;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* =========================================
+   EARTHSERVE LOGO - INFINITE PENDULUM
+========================================= */
+
+@keyframes earthServeLogoSwing {
+  0% {
+    transform: rotate(-25deg);
+  }
+
+  25% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(25deg);
+  }
+
+  75% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-25deg);
   }
 }
 
+/* Fixed suspension point */
+.earth-logo-pendulum-origin {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+/* The complete swinging pendulum */
+.earth-logo-pendulum-origin > .earth-logo-pendulum {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 45px;
+
+  transform-origin: 50% 0%;
+  animation: earthServeLogoSwing 3.5s ease-in-out infinite !important;
+  animation-delay: 0s;
+  animation-play-state: running !important;
+
+  will-change: transform;
+}
+
+/* Visible suspension string */
+.earth-logo-pendulum-origin > .earth-logo-pendulum::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 45px;
+
+  background: #477b35;
+  border-radius: 10px;
+  transform: translateX(-50%);
+}
+
+/* Respect reduced motion for other elements.
+   The requested EarthServe pendulum remains animated. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *:not(.earth-logo-pendulum),
+  *:not(.earth-logo-pendulum)::before,
+  *:not(.earth-logo-pendulum)::after {
+    transition-duration: 0.01ms !important;
+  }
+}

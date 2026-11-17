@@ -53,7 +53,7 @@ const impactCards = [
     imagePosition: "object-center",
   },
   {
-    image: "/images/earthserve3.jpg",
+    image: "/images/earthserve5.jpg",
     alt: "EarthServe community participation and environmental initiatives",
     label: "Community Empowerment",
     title: "People Creating Lasting Change",

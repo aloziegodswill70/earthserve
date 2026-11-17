@@ -234,6 +234,22 @@ export default function AboutSection() {
             </Link>
           </div>
         </div>
+                  {/* Large EarthServe Logo Pendulum */}
+                  {/* Large EarthServe Logo Pendulum */}
+        <div className="mt-8 flex justify-center">
+          <div className="earth-logo-pendulum-origin">
+            <div className="earth-logo-pendulum">
+              <Image
+                src="/images/earthservelogo.png"
+                alt="EarthServe Foundation International"
+                width={240}
+                height={240}
+                priority
+                className="h-48 w-48 object-contain sm:h-60 sm:w-60 lg:h-72 lg:w-72"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Focus areas */}
         <div className="relative mx-auto mt-16 max-w-6xl sm:mt-20">
