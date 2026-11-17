@@ -153,12 +153,12 @@ export default function MissionVisionSection() {
         <div className="mt-12 lg:mt-16">
           <div className="relative isolate min-h-[320px] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl sm:min-h-[420px] lg:min-h-[480px]">
             <Image
-              src="/images/earthserve1.jpg"
+              src="/images/earthserve6.jpg"
               alt="EarthServe Foundation environmental and community initiatives"
               fill
               priority={false}
               sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover transition-transform duration-1000 hover:scale-105"
+              className="object-cover object-top transition-transform duration-1000 hover:scale-105"
             />
 
             {/* Image overlay */}

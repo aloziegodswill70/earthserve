@@ -71,7 +71,7 @@ export default function OperationalTeam() {
                     fill
                     priority={index === 0}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#012812]/30 to-transparent" />
