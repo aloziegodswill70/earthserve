@@ -25,17 +25,18 @@ function BrandName() {
   return (
     <div className="flex min-w-0 flex-col justify-center">
       <span
-        className="whitespace-nowrap text-xl font-black leading-none tracking-tight text-[#83C923] sm:text-2xl lg:text-3xl"
+        className="whitespace-nowrap text-xl font-black leading-none tracking-tight text-[#91D52B] sm:text-2xl lg:text-3xl"
         style={{
-          WebkitTextStroke: "1px #080808",
+          WebkitTextStroke: "1.8px #000000",
           paintOrder: "stroke fill",
-          textShadow: "1.5px 2px 0px #080808",
+          textShadow:
+            "0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 10px #ffffff, 2px 2px 0px #000000",
         }}
       >
         EarthServe
       </span>
 
-      <span className="mt-1.5 whitespace-nowrap text-[9px] font-black uppercase tracking-tight text-[#171717] sm:text-xs lg:text-sm">
+      <span className="mt-1.5 whitespace-nowrap text-[9px] font-black uppercase tracking-tight text-white sm:text-xs lg:text-sm">
         Foundation International
       </span>
     </div>
@@ -47,7 +48,7 @@ function BrandLogo() {
     <Link
       href="/"
       aria-label="EarthServe Foundation International home"
-      className="flex h-14 w-14 shrink-0 items-center justify-center bg-black p-1.5 sm:h-16 sm:w-16 lg:h-[76px] lg:w-[76px]"
+      className="flex h-20 w-20 shrink-0 items-center justify-center bg-black p-0.5 sm:h-24 sm:w-24 lg:h-28 lg:w-28"
     >
       <div className="relative h-full w-full">
         <Image
@@ -55,7 +56,7 @@ function BrandLogo() {
           alt="EarthServe logo"
           fill
           priority
-          sizes="76px"
+          sizes="112px"
           className="object-contain"
         />
       </div>
@@ -93,7 +94,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-earth-100 bg-white/95 shadow-sm backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/20 bg-black shadow-[0_3px_12px_rgba(255,255,255,0.12)] backdrop-blur-md">
       <nav
         aria-label="Main navigation"
         className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:px-5 lg:px-8 lg:py-3"
@@ -110,7 +111,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap text-sm font-semibold text-earth-800 transition hover:text-[#83C923]"
+              className="whitespace-nowrap text-sm font-semibold text-white transition hover:text-[#91D52B]"
             >
               {link.label}
             </Link>
@@ -135,7 +136,7 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-earth-100 text-earth-800 transition hover:bg-earth-50"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/30 text-white transition hover:bg-white/10"
           >
             {menuOpen ? <X size={23} /> : <Menu size={23} />}
           </button>
@@ -146,7 +147,7 @@ export default function Navbar() {
       {menuOpen && (
         <div
           id="mobile-navigation"
-          className="border-t border-earth-100 bg-white px-4 pb-5 pt-3 shadow-lg lg:hidden"
+          className="border-t border-white/20 bg-black px-4 pb-5 pt-3 shadow-lg lg:hidden"
         >
           <div className="mx-auto flex max-w-7xl flex-col">
             {navLinks.map((link) => (
@@ -154,7 +155,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-earth-50 py-3.5 text-sm font-semibold text-earth-800 transition hover:text-[#83C923]"
+                className="border-b border-white/10 py-3.5 text-sm font-semibold text-white transition hover:text-[#91D52B]"
               >
                 {link.label}
               </Link>

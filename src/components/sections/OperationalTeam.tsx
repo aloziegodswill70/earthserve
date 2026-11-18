@@ -21,7 +21,7 @@ const teamMembers = [
     role: "Board Member",
     description:
       "An expert in Nutrition and Toxicology, bringing specialist knowledge to the foundation's work.",
-    image: "/images/emeke.jpg",
+    image: "/images/dr emeke.jpg",
   },
   {
     name: "Dr. Godswill O. Alozie",

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -159,43 +158,55 @@ export default function Footer() {
         </div>
 
         {/* EarthServe brand identity */}
-        <div className="mx-auto mt-9 flex max-w-6xl flex-row items-stretch overflow-hidden border-y-[3px] border-black/80 bg-white shadow-lg sm:mt-14">
+          <div className="relative left-1/2 mt-9 w-screen -translate-x-1/2 overflow-hidden border-y-[3px] border-black/80 shadow-lg sm:mt-14">
 
-          {/* Black square with original logo */}
-          <Link
-            href="/"
-            aria-label="EarthServe Foundation home"
-            className="flex aspect-square w-[30%] max-w-52 shrink-0 items-center justify-center bg-black p-2 transition hover:bg-[#101010] sm:w-52 sm:p-5 md:w-64"
-          >
-            <div className="relative h-full w-full max-h-36 max-w-36 sm:max-h-40 sm:max-w-40 md:max-h-44 md:max-w-44">
-              <Image
-                src="/images/earthservelogo.png"
-                alt="EarthServe Foundation logo"
-                fill
-                sizes="(min-width: 768px) 176px, 30vw"
-                className="object-contain"
-              />
+            {/* Full-width split background */}
+            <div className="absolute inset-0 grid grid-cols-2">
+              <div className="bg-black" />
+              <div className="bg-white" />
             </div>
-          </Link>
 
-          {/* White brand lettering section */}
-          <div className="flex min-w-0 flex-1 flex-col items-center justify-center px-1 py-4 sm:min-h-52 sm:px-6 sm:py-9">
-            <span
-              className="text-3xl font-black leading-none tracking-tight text-[#83C923] sm:text-6xl md:text-7xl"
-              style={{
-                WebkitTextStroke: "1px #080808",
-                paintOrder: "stroke fill",
-                textShadow: "2px 3px 0px #080808",
-              }}
-            >
-              EarthServe
-            </span>
+            {/* Centered brand content */}
+            <div className="relative mx-auto flex w-full max-w-4xl flex-row items-stretch justify-center">
 
-            <span className="mt-2 text-center text-[10px] font-black uppercase tracking-tight text-[#171717] sm:mt-3 sm:text-2xl md:text-3xl">
-              Foundation International
-            </span>
+              {/* Black logo section */}
+              <Link
+                href="/"
+                aria-label="EarthServe Foundation home"
+                className="flex aspect-square w-[30%] max-w-52 shrink-0 items-center justify-center bg-black p-2 transition hover:bg-[#101010] sm:w-52 sm:p-5 md:w-64"
+              >
+                <div className="relative h-full w-full max-h-36 max-w-36 sm:max-h-40 sm:max-w-40 md:max-h-44 md:max-w-44">
+                  <Image
+                    src="/images/earthservelogo.png"
+                    alt="EarthServe Foundation logo"
+                    fill
+                    sizes="(min-width: 768px) 176px, 30vw"
+                    className="object-contain"
+                  />
+                </div>
+              </Link>
+
+              {/* White lettering section */}
+              <div className="flex min-w-0 flex-1 flex-col items-center justify-center self-stretch bg-white px-1 py-4 sm:min-h-52 sm:px-6 sm:py-9">
+                <span
+                  className="text-3xl font-black leading-none tracking-tight text-[#83C923] sm:text-6xl md:text-7xl"
+                  style={{
+                    WebkitTextStroke: "2px #080808",
+                    paintOrder: "stroke fill",
+                    textShadow:
+                      "0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 10px #ffffff, 2px 3px 0px #080808",
+                  }}
+                >
+                  EarthServe
+                </span>
+
+                <span className="mt-2 text-center text-[10px] font-black uppercase tracking-tight text-[#171717] sm:mt-3 sm:text-2xl md:text-3xl">
+                  Foundation International
+                </span>
+              </div>
+
+            </div>
           </div>
-        </div>
 
         {/* Official clickable focus statements */}
         <div className="mx-auto mt-5 flex max-w-5xl flex-col items-center gap-2 text-[10px] font-medium leading-relaxed sm:mt-7 sm:gap-3 sm:text-xl md:text-2xl">
