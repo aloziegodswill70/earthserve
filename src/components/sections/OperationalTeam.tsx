@@ -7,28 +7,28 @@ const teamMembers = [
     role: "Chairman, Board of Trustees",
     description:
       "General Operational Manager and Managing Director, providing leadership, strategic direction, and operational oversight.",
-    image: "/images/joey.jpg",
+    image: "/images/joey.jpg?v=2",
   },
   {
     name: "Mr. Teddy Ogbonna",
     role: "Board Member",
     description:
       "Former Vice Chair of the Human Rights Information Network (HRIN), Nigeria, with experience in human rights advocacy.",
-    image: "/images/teddy.jpg",
+    image: "/images/teddy.jpg?v=2",
   },
   {
     name: "Dr. Emeke Israel Chukwuemeka",
     role: "Board Member",
     description:
       "An expert in Nutrition and Toxicology, bringing specialist knowledge to the foundation's work.",
-    image: "/images/dr emeke.jpg",
+    image: "/images/dr emeke.jpg?v=2",
   },
   {
     name: "Dr. Godswill O. Alozie",
     role: "Board Member",
     description:
       "An Optometrist and Expert Software Developer, contributing professional expertise in eye care and technology.",
-    image: "/images/dr godswill.jpg",
+    image: "/images/dr godswill.jpg?v=2",
   },
 ];
 
@@ -69,9 +69,10 @@ export default function OperationalTeam() {
                     src={member.image}
                     alt={member.name}
                     fill
+                    unoptimized
                     priority={index === 0}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-[center_0%] sm:object-[center_20%] transition-transform duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#012812]/30 to-transparent" />
